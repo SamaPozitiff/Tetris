@@ -1,10 +1,10 @@
-package main.java.manager;
+package manager;
 
 import java.util.ArrayList;
 
-import main.java.figure.Block;
-import main.java.figure.Field;
-import main.java.figure.Figure;
+import figure.Block;
+import figure.Field;
+import figure.Figure;
 
 public class Game {
     Field field;

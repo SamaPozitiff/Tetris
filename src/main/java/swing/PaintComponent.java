@@ -1,4 +1,4 @@
-package main.java.swing;
+package swing;
 
 
 import java.awt.Color;
@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import main.java.figure.Block;
-import main.java.figure.Field;
+import figure.Block;
+import figure.Field;
 
 public class PaintComponent extends JPanel {
     final int CELL = 50;

@@ -1,8 +1,8 @@
-package main.java.swing;
+package swing;
 
 
-import main.java.manager.Controller;
-import main.java.manager.Game;
+import manager.Controller;
+import manager.Game;
 
 import javax.swing.*;
 

@@ -1,11 +1,11 @@
-package main.java.manager;
+package manager;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
-import main.java.figure.Field;
-import main.java.figure.Figure;
-import main.java.figure.GenerateFigure;
+import figure.Field;
+import figure.Figure;
+import figure.GenerateFigure;
 
 public class FigureManager {
     Queue<Figure> queue;
