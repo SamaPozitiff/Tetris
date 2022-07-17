@@ -40,6 +40,9 @@ public class Controller implements KeyListener {
         if (key.equalsIgnoreCase("q") || key.equalsIgnoreCase("й")) {
             game.rotateFigureLeft();
         }
+        if (key.equalsIgnoreCase("w") || key.equalsIgnoreCase("ц")){
+            game.dropFigureDown();
+        }
         paintGame.repaint();
     }
 

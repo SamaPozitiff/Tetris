@@ -2,15 +2,12 @@ package main.java.figure;
 
 import java.util.ArrayList;
 
-public class Figures_S_Z_I extends Figure {
+public class Figures_S_Z extends Figure {
     public static final int STATE_HORIZONTAL = 0;
     public static final int STATE_VERTICAL = 1;
 
 
-    public Figures_S_Z_I(int i) {
-        if (i == FIGURE_I) {
-            blocks = newFigureI();
-        }
+    public Figures_S_Z(int i) {
         if (i == FIGURE_S) {
             blocks = newFigureS();
         }
@@ -39,15 +36,7 @@ public class Figures_S_Z_I extends Figure {
         return figureZ;
     }
 
-    public ArrayList<Block> newFigureI() {
-        ArrayList<Block> figureI = new ArrayList<Block>();
 
-        figureI.add(new Block(0, 0));
-        figureI.add(new Block(0, -1));
-        figureI.add(new Block(0, -2));
-        figureI.add(new Block(0, -3));
-        return figureI;
-    }
 
     public void rotateRight() {
         for (int i = 1; i < SIZE; i++) {

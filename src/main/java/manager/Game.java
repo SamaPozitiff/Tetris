@@ -57,5 +57,11 @@ public class Game {
         }
     }
 
+    public void dropFigureDown(){
+        while(figureManager.canFigureFall()){
+            figureManager.currentFigure.goDown();
+        }
+    }
+
 }
 
