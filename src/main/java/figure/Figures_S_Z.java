@@ -18,21 +18,20 @@ public class Figures_S_Z extends Figure {
 
     public ArrayList<Block> newFigureS() {
         ArrayList<Block> figureS = new ArrayList<Block>();
-
-        figureS.add(new Block(0, 0));
-        figureS.add(new Block(0, 1));
-        figureS.add(new Block(-1, 0));
-        figureS.add(new Block(-1, -1));
+        figureS.add(new Block(0, 0, Figure.FIGURE_S));
+        figureS.add(new Block(0, 1, Figure.FIGURE_S));
+        figureS.add(new Block(-1, 0, Figure.FIGURE_S));
+        figureS.add(new Block(-1, -1, Figure.FIGURE_S));
         return figureS;
     }
 
     public ArrayList<Block> newFigureZ() {
         ArrayList<Block> figureZ = new ArrayList<Block>();
-
-        figureZ.add(new Block(0, 0));
-        figureZ.add(new Block(0, -1));
-        figureZ.add(new Block(-1, 0));
-        figureZ.add(new Block(1, -1));
+        int image = (int)(Math.random() * 4);
+        figureZ.add(new Block(0, 0, Figure.FIGURE_S));
+        figureZ.add(new Block(0, -1, Figure.FIGURE_S));
+        figureZ.add(new Block(-1, 0, Figure.FIGURE_S));
+        figureZ.add(new Block(1, -1, Figure.FIGURE_S));
         return figureZ;
     }
 

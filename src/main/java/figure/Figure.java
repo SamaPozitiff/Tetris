@@ -28,8 +28,12 @@ public class Figure {
 
     public Block getBlock(int index) {
         Block block = blocks.get(index);
-        Block absBlock = new Block(absolute.getX() + block.getX(), absolute.getY() + block.getY());
+        Block absBlock = new Block(absolute.getX() + block.getX(), absolute.getY() + block.getY(), block.getImage());
         return absBlock;
+    }
+
+    public int getTypeOfFigure(){
+        return typeOfFigure;
     }
 
     public void setAbcoluteY(int y) {

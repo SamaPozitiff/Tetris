@@ -9,11 +9,10 @@ public class Figure_I extends Figure{
     }
     public ArrayList<Block> newFigureI() {
         ArrayList<Block> figureI = new ArrayList<Block>();
-
-        figureI.add(new Block(0, 0));
-        figureI.add(new Block(0, -1));
-        figureI.add(new Block(0, -2));
-        figureI.add(new Block(0, -3));
+        figureI.add(new Block(0, 0, Figure.FIGURE_I));
+        figureI.add(new Block(0, -1, Figure.FIGURE_I));
+        figureI.add(new Block(0, -2, Figure.FIGURE_I));
+        figureI.add(new Block(0, -3, Figure.FIGURE_I));
         return figureI;
     }
 

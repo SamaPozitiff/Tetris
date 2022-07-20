@@ -18,31 +18,28 @@ public class Figures_L_J_T extends Figure{
 
     public ArrayList<Block> newFigureJ() {
         ArrayList<Block> figureJ = new ArrayList<Block>();
-
-        figureJ.add(new Block(0, 0));
-        figureJ.add(new Block(-1, 0));
-        figureJ.add(new Block(0, -1));
-        figureJ.add(new Block(0, -2));
+        figureJ.add(new Block(0, 0, FIGURE_J));
+        figureJ.add(new Block(-1, 0, FIGURE_J));
+        figureJ.add(new Block(0, -1, FIGURE_J));
+        figureJ.add(new Block(0, -2, FIGURE_J));
         return figureJ;
     }
 
     public ArrayList<Block> newFigureL() {
         ArrayList<Block> figureL = new ArrayList<Block>();
-
-        figureL.add(new Block(0, 0));
-        figureL.add(new Block(1, 0));
-        figureL.add(new Block(0, -1));
-        figureL.add(new Block(0, -2));
+        figureL.add(new Block(0, 0, Figure.FIGURE_L));
+        figureL.add(new Block(1, 0, Figure.FIGURE_L));
+        figureL.add(new Block(0, -1, Figure.FIGURE_L));
+        figureL.add(new Block(0, -2, Figure.FIGURE_L));
         return figureL;
     }
 
     public ArrayList<Block> newFigureT() {
         ArrayList<Block> figureT = new ArrayList<Block>();
-
-        figureT.add(new Block(0, 0));
-        figureT.add(new Block(1, 0));
-        figureT.add(new Block(0, 1));
-        figureT.add(new Block(0, -1));
+        figureT.add(new Block(0, 0, Figure.FIGURE_T));
+        figureT.add(new Block(1, 0, Figure.FIGURE_T));
+        figureT.add(new Block(0, 1, Figure.FIGURE_T));
+        figureT.add(new Block(0, -1, Figure.FIGURE_T));
         return figureT;
     }
 }

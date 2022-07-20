@@ -11,10 +11,15 @@ import javax.swing.JPanel;
 
 import main.java.figure.Block;
 import main.java.figure.Field;
+import main.java.figure.Figure;
 
 public class PaintComponent extends JPanel {
     final int CELL = 50;
     ArrayList<Block> blocks;
+    Image blockImage;
+
+
+
 
 
 
@@ -25,8 +30,6 @@ public class PaintComponent extends JPanel {
 
 
     public void paintComponent(Graphics g) {
-
-        Image blockImage = new ImageIcon("src/main/resources/Block.png").getImage();
         g.setColor(getBackground());
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
         g.setColor(Color.gray);
@@ -38,6 +41,22 @@ public class PaintComponent extends JPanel {
         for(Block block:blocks) {
             int x = block.getX() * CELL;
             int y = block.getY() * CELL;
+            if (block.getImage() == Figure.FIGURE_L){
+                blockImage = new ImageIcon("src/main/resources/BlockL.png").getImage();
+            }else if(block.getImage() == Figure.FIGURE_J){
+                blockImage = new ImageIcon("src/main/resources/BlockJ.png").getImage();
+            } else if (block.getImage() == Figure.FIGURE_I){
+                blockImage = new ImageIcon("src/main/resources/BlockI.png").getImage();
+            } else if (block.getImage() == Figure.FIGURE_S){
+                blockImage = new ImageIcon("src/main/resources/BlockS.png").getImage();
+            } else if (block.getImage() == Figure.FIGURE_Z){
+                blockImage = new ImageIcon("src/main/resources/BlockZ.png").getImage();
+            } else if (block.getImage() == Figure.FIGURE_O){
+                blockImage = new ImageIcon("src/main/resources/BlockO.png").getImage();
+            }
+            else{
+                blockImage = new ImageIcon("src/main/resources/BlockT.png").getImage();
+            }
             g.drawImage(blockImage, x, y, CELL, CELL, this);
         }
 
