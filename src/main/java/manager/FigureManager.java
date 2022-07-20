@@ -87,7 +87,7 @@ public class FigureManager {
         tester.rotateRight();
         for (int i = 0; i < Figure.SIZE; i++) {
             if (field.IsBlockEmpty(tester.getBlock(i).getX(), tester.getBlock(i).getY()) == false
-                    || tester.getBlock(i).getX() <= 0 || tester.getBlock(i).getX() >= Field.FIELD_X - 1
+                    || tester.getBlock(i).getX() < 0 || tester.getBlock(i).getX() >= Field.FIELD_X - 1
                     || tester.getBlock(i).getY() >= Field.FIELD_Y - 1) {
                 return false;
 
@@ -101,7 +101,7 @@ public class FigureManager {
         tester.rotateLeft();
         for (int i = 0; i < Figure.SIZE; i++) {
             if (field.IsBlockEmpty(tester.getBlock(i).getX(), tester.getBlock(i).getY()) == false
-                    || tester.getBlock(i).getX() == 0 || tester.getBlock(i).getX() == Field.FIELD_X - 1
+                    || tester.getBlock(i).getX() < 0 || tester.getBlock(i).getX() == Field.FIELD_X - 1
                     || tester.getBlock(i).getY() >= Field.FIELD_Y - 1) {
                 return false;
             }

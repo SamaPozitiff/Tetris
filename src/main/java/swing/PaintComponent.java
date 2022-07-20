@@ -18,11 +18,6 @@ public class PaintComponent extends JPanel {
     ArrayList<Block> blocks;
     Image blockImage;
 
-
-
-
-
-
     public void paintBlocks(ArrayList<Block> blocks) {
         this.blocks = blocks;
         repaint();
