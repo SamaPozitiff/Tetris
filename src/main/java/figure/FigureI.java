@@ -2,18 +2,14 @@ package main.java.figure;
 
 import java.util.ArrayList;
 
-public class Figure_I extends Figure{
+public class FigureI extends Figure{
 
-    public Figure_I(){
-        blocks = newFigureI();
-    }
-    public ArrayList<Block> newFigureI() {
-        ArrayList<Block> figureI = new ArrayList<Block>();
-        figureI.add(new Block(0, 0, Figure.FIGURE_I));
-        figureI.add(new Block(0, -1, Figure.FIGURE_I));
-        figureI.add(new Block(0, -2, Figure.FIGURE_I));
-        figureI.add(new Block(0, -3, Figure.FIGURE_I));
-        return figureI;
+    public FigureI(){
+        blocks = new ArrayList<Block>();
+        blocks.add(new Block(0, 0, Figure.FIGURE_I));
+        blocks.add(new Block(0, -1, Figure.FIGURE_I));
+        blocks.add(new Block(0, -2, Figure.FIGURE_I));
+        blocks.add(new Block(0, -3, Figure.FIGURE_I));
     }
 
     public void rotateRight() {

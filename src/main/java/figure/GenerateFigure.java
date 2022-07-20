@@ -2,54 +2,46 @@ package main.java.figure;
 
 public class GenerateFigure {
 
-    public GenerateFigure() {
 
-    }
-
-    public Figure createFigure() {
+    public Figure createRandomFigure() {
         Figure newFigure;
         int i = (int) (Math.random() * Figure.MAX_VARIANTS_OF_FIGURE + 1);
         if (i == Figure.FIGURE_I) {
-            newFigure = new Figure_I();
+            newFigure = new FigureI();
         } else if (i == Figure.FIGURE_L) {
-            newFigure = new Figures_L_J_T(i);
+            newFigure = new FigureL();
         } else if (i == Figure.FIGURE_J) {
-            newFigure = new Figures_L_J_T(i);
+            newFigure = new FigureJ();
         } else if (i == Figure.FIGURE_O) {
-            newFigure = new Figure_O();
+            newFigure = new FigureO();
         } else if (i == Figure.FIGURE_S) {
-            newFigure = new Figures_S_Z(i);
+            newFigure = new FigureS();
         } else if (i == Figure.FIGURE_Z) {
-            newFigure = new Figures_S_Z(i);
+            newFigure = new FigureZ();
         } else {
-            newFigure = new Figures_L_J_T(i);
+            newFigure = new FigureT();
         }
-        newFigure.absolute = new Block(0, 0);
-        newFigure.typeOfFigure = i;
         return newFigure;
     }
 
 
     public static Figure createParticularFigure(int typeOfFigure) {
         Figure newFigure;
-
         if (typeOfFigure == Figure.FIGURE_I) {
-            newFigure = new Figure_I();
+            newFigure = new FigureI();
         } else if (typeOfFigure == Figure.FIGURE_L) {
-            newFigure = new Figures_L_J_T(typeOfFigure);
+            newFigure = new FigureL();
         } else if (typeOfFigure == Figure.FIGURE_J) {
-            newFigure = new Figures_L_J_T(typeOfFigure);
+            newFigure = new FigureJ();
         } else if (typeOfFigure == Figure.FIGURE_O) {
-            newFigure = new Figure_O();
+            newFigure = new FigureO();
         } else if (typeOfFigure == Figure.FIGURE_S) {
-            newFigure = new Figures_S_Z(typeOfFigure);
+            newFigure = new FigureS();
         } else if (typeOfFigure == Figure.FIGURE_Z) {
-            newFigure = new Figures_S_Z(typeOfFigure);
+            newFigure = new FigureZ();
         } else {
-            newFigure = new Figures_L_J_T(typeOfFigure);
+            newFigure = new FigureT();
         }
-        newFigure.absolute = new Block(0, 0);
-        newFigure.typeOfFigure = typeOfFigure;
         return newFigure;
     }
 

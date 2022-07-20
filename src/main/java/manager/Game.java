@@ -9,15 +9,17 @@ import main.java.figure.Figure;
 public class Game {
     Field field;
     FigureManager figureManager;
+    FigureControl figureControl;
 
     public Game() {
         field = new Field();
-        figureManager = new FigureManager(field);
-        figureManager.figureOnStart();
+        figureManager = new FigureManager();
+        figureControl = new FigureControl(field, figureManager);
+        figureControl.getFigureFromQueue();
     }
 
     public void makeGameStep() {
-        figureManager.figureGoDown();
+        figureControl.goDown();
     }
 
     public ArrayList<Block> getAllBlocks() {
@@ -26,42 +28,12 @@ public class Game {
             allBlocks.add(block);
         }
         for (int i = 0; i < Figure.SIZE; i++) {
-            allBlocks.add(figureManager.getCurrentFigure().getBlock(i));
+            allBlocks.add(figureControl.getFigure().getBlock(i));
         }
         return allBlocks;
     }
 
-    public void moveLeft() {
-        if (figureManager.canFigureMoveLeft()) {
-            figureManager.currentFigure.goLeft();
-        }
-    }
 
-    public void moveRight() {
-        if (figureManager.canFigureMoveRight()) {
-            figureManager.currentFigure.goRight();
-        }
-    }
-
-    public void rotateFigureRight() {
-        if (figureManager.canFigureRotateRight()) {
-            figureManager.currentFigure.rotateRight();
-
-        }
-
-    }
-
-    public void rotateFigureLeft() {
-        if (figureManager.canFigureRotateLeft()) {
-            figureManager.currentFigure.rotateLeft();
-        }
-    }
-
-    public void dropFigureDown(){
-        while(figureManager.canFigureFall()){
-            figureManager.currentFigure.goDown();
-        }
-    }
 
 }
 

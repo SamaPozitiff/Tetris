@@ -1,9 +1,12 @@
 package main.java.figure;
 
+import main.java.manager.IField;
+
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
-public class Field {
+public class Field implements IField {
     ArrayList<Block> blocks;
     public static final int FIELD_Y = 20;
     public static final int FIELD_X = 20;
@@ -16,41 +19,23 @@ public class Field {
         return blocks;
     }
 
-    public boolean isNextDownBlockEmpty(int x, int y) {
-        for (Block blockInArray : blocks) {
-            if (blockInArray.getX() == x && blockInArray.getY() == y + 1) {
+    @Override
+    public boolean isBlockEmpty(int x, int y) {
+        for (Block block : blocks) {
+            if (block.getX() == x && block.getY() == y) {
                 return false;
             }
         }
         return true;
     }
 
-    public void addFigureToField(Figure figure) {
-        for (int i = 0; i < Figure.SIZE; i++) {
-            blocks.add(figure.getBlock(i));
-        }
+    @Override
+    public void addBlock(List<Block> figure) {
+        blocks.addAll(figure);
         checkFullRow();
     }
 
-    public boolean isNextLeftBlockEmpty(int x, int y) {
-        for (Block blockInArray : blocks) {
-            if (blockInArray.getX() == x - 1 && blockInArray.getY() == y) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public boolean isNextRightBlockEmpty(int x, int y) {
-        for (Block blockInArray : blocks) {
-            if (blockInArray.getX() == x + 1 && blockInArray.getY() == y) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public void removeBlocksRow(int y) {
+    private void removeBlocksRow(int y) {
 
         Iterator<Block> iterator = blocks.iterator();
         while (iterator.hasNext()) {
@@ -58,15 +43,9 @@ public class Field {
                 iterator.remove();
             }
         }
-
-//		for(Block block: blocks) {
-//			if (block.getY() == y) {
-//				blocks.remove(block);
-//			}
-//		}
     }
 
-    public void moveRowsDown(int y) {
+    private void moveRowsDown(int y) {
         for (Block block : blocks) {
             if (block.getY() < y) {
                 block.setY(block.getY() + 1);
@@ -74,7 +53,7 @@ public class Field {
         }
     }
 
-    public int countBlocksInRow(int y) {
+    private int countBlocksInRow(int y) {
         int blocksInRow = 0;
         for (Block block : blocks) {
             if (block.getY() == y) {
@@ -84,21 +63,12 @@ public class Field {
         return blocksInRow;
     }
 
-    public void checkFullRow() {
+    private void checkFullRow() {
         for (int i = 0; i < Field.FIELD_Y; i++) {
             if (countBlocksInRow(i) == Field.FIELD_X) {
                 removeBlocksRow(i);
                 moveRowsDown(i);
             }
         }
-    }
-
-    public boolean IsBlockEmpty(int x, int y) {
-        for (Block block : blocks) {
-            if (block.getX() == x && block.getY() == y) {
-                return false;
-            }
-        }
-        return true;
     }
 }

@@ -1,11 +1,13 @@
 package main.java.figure;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class Figure {
+public abstract class Figure {
     protected ArrayList<Block> blocks;
-    Block absolute;
-    public int typeOfFigure = 0;
+    private int absoluteX;
+    private int absoluteY;
+    protected int typeOfFigure = 0;
     public static final int SIZE = 4;
     public static final int FIGURE_L = 1;
     public static final int FIGURE_J = 2;
@@ -16,44 +18,45 @@ public class Figure {
     public static final int FIGURE_T = 7;
     public static final int MAX_VARIANTS_OF_FIGURE = 7;
 
-
-    public Figure() {
-        blocks = new ArrayList<Block>();
-        blocks.add(new Block(0,0));
-        blocks.add(new Block(0,0));
-        blocks.add(new Block(0,0));
-        blocks.add(new Block(0,0));
-        absolute = new Block(0,0);
+    Figure(){
+       absoluteX = 0;
+       absoluteY = 0;
     }
+
+
 
     public Block getBlock(int index) {
         Block block = blocks.get(index);
-        Block absBlock = new Block(absolute.getX() + block.getX(), absolute.getY() + block.getY(), block.getImage());
+        Block absBlock = new Block(absoluteX + block.getX(), absoluteY + block.getY(), block.getImage());
         return absBlock;
     }
 
-    public int getTypeOfFigure(){
-        return typeOfFigure;
+    public List<Block> getAllBlocks(){
+        ArrayList<Block> blocks = new ArrayList<>();
+        for (int i = 0; i < Figure.SIZE; i++){
+            blocks.add(getBlock(i));
+        }
+        return blocks;
     }
 
     public void setAbcoluteY(int y) {
-        absolute.setY(y);
+        absoluteY = y;
     }
 
     public void setAbsoluteX(int x) {
-        absolute.setX(x);
+        absoluteX = x;
     }
 
     public void goDown() {
-        absolute.setY(absolute.getY() + 1);
+        absoluteY++;
     }
 
     public void goLeft() {
-        absolute.setX(absolute.getX() - 1);
+        absoluteX--;
     }
 
     public void goRight() {
-        absolute.setX(absolute.getX() + 1);
+        absoluteX++;
     }
 
     public void rotateRight() {
@@ -82,8 +85,8 @@ public class Figure {
             newFigure.getBlock(i).setX(figure.getBlock(i).getX());
             newFigure.getBlock(i).setY(figure.getBlock(i).getY());
         }
-        newFigure.setAbsoluteX(figure.absolute.getX());
-        newFigure.setAbcoluteY(figure.absolute.getY());
+        newFigure.setAbsoluteX(figure.absoluteX);
+        newFigure.setAbcoluteY(figure.absoluteY);
         return newFigure;
     }
 }

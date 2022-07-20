@@ -8,21 +8,23 @@ import java.awt.event.KeyListener;
 public class Controller implements KeyListener {
     Game game;
     PaintComponent paintGame;
+    FigureControl figureControl;
 
 
     public Controller(Game game, PaintComponent paintGame) {
         this.game = game;
         this.paintGame = paintGame;
+        figureControl = game.figureControl;
     }
 
     public void keyTyped(KeyEvent e) {
         String key = String.valueOf(e.getKeyChar());
         if (key.equalsIgnoreCase("a") || key.equalsIgnoreCase("ф")) {
-            game.moveLeft();
+            figureControl.goLeft();
 
         }
         if (key.equalsIgnoreCase("d") || key.equalsIgnoreCase("в")) {
-            game.moveRight();
+            figureControl.goRight();
         }
         paintGame.repaint();
     }
@@ -35,13 +37,13 @@ public class Controller implements KeyListener {
     public void keyReleased(KeyEvent e) {
         String key = String.valueOf(e.getKeyChar());
         if (key.equalsIgnoreCase("e") || key.equalsIgnoreCase("у")) {
-            game.rotateFigureRight();
+            figureControl.rotateRight();
         }
         if (key.equalsIgnoreCase("q") || key.equalsIgnoreCase("й")) {
-            game.rotateFigureLeft();
+            figureControl.rotateLeft();
         }
         if (key.equalsIgnoreCase("w") || key.equalsIgnoreCase("ц")){
-            game.dropFigureDown();
+            figureControl.dropDown();
         }
         paintGame.repaint();
     }

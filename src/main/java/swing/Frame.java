@@ -24,7 +24,7 @@ public class Frame {
         paintGame.setSize(1000, 1000);
         jFrame.add(paintGame);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jFrame.setSize(1000, 1000);
+        jFrame.setSize(1020, 1050);
         jFrame.addKeyListener(controller);
         jFrame.setVisible(true);
     }
