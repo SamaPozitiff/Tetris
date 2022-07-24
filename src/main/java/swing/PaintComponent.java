@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -13,20 +14,18 @@ import main.java.figure.Block;
 import main.java.figure.Field;
 import main.java.figure.Figure;
 
-public class PaintComponent extends JPanel {
+public class PaintComponent extends JPanel implements IPaintGame{
     final int CELL = 50;
     ArrayList<Block> blocks;
     Image blockImage;
 
-    public void paintBlocks(ArrayList<Block> blocks) {
-        this.blocks = blocks;
-        repaint();
+    public PaintComponent(){
+
     }
 
-
     public void paintComponent(Graphics g) {
-        g.setColor(getBackground());
-        g.fillRect(0, 0, this.getWidth(), this.getHeight());
+        g.setColor(Color.pink);
+        g.fillRect(0, 0, 1000, 1000);
         g.setColor(Color.gray);
         for (int i = 0; i < Field.FIELD_X; i++) {
             for (int j = 0; j < Field.FIELD_Y; j ++) {
@@ -34,6 +33,7 @@ public class PaintComponent extends JPanel {
             }
         }
         for(Block block:blocks) {
+
             int x = block.getX() * CELL;
             int y = block.getY() * CELL;
             if (block.getImage() == Figure.FIGURE_L){
@@ -57,5 +57,10 @@ public class PaintComponent extends JPanel {
 
     }
 
+    @Override
+    public void paintGame(List<Block> blocks) {
+        this.blocks = (ArrayList<Block>) blocks;
+        repaint();
+    }
 }
 

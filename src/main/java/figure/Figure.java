@@ -39,6 +39,10 @@ public abstract class Figure {
         return blocks;
     }
 
+    public int getTypeOfFigure() {
+        return typeOfFigure;
+    }
+
     public void setAbcoluteY(int y) {
         absoluteY = y;
     }

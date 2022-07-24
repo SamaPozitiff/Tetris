@@ -1,6 +1,5 @@
 package main.java.manager;
 
-import main.java.figure.Field;
 import main.java.figure.Figure;
 
 //НЕ КОНТРОЛЛЕР
