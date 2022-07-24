@@ -24,7 +24,7 @@ public class PaintComponent extends JPanel implements IPaintGame{
     }
 
     public void paintComponent(Graphics g) {
-        g.setColor(Color.pink);
+        g.setColor(getBackground());
         g.fillRect(0, 0, 1000, 1000);
         g.setColor(Color.gray);
         for (int i = 0; i < Field.FIELD_X; i++) {

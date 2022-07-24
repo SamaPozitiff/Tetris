@@ -16,7 +16,7 @@ public class Frame {
 
     public static void initialize() {
         paintGame = new PaintComponent();
-        paintQueue = new PaintQueue(jFrame);
+        paintQueue = new PaintQueue();
         game = new Game(paintQueue, paintGame);
         controller = new Controller(game,
                 paintGame);

@@ -11,8 +11,6 @@ public class DrawImage extends JPanel {
         repaint();
     }
     public void paintComponent(Graphics g){
-        g.setColor(Color.white);
-        g.fillRect(0,0,200, 200);
         g.drawImage(figure, 0, 0, 200, 200, this);
 
     }

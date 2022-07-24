@@ -2,19 +2,16 @@ package main.java.swing;
 
 import main.java.figure.Figure;
 import main.java.manager.IQueueListener;
-import org.w3c.dom.Text;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
 
 public class PaintQueue extends JPanel implements IQueueListener {
     int typeOfFigure;
     ArrayList<Figure> queue;
     DrawImage drawImage;
-    JFrame frame;
     Image figureL = new ImageIcon("src/main/resources/FigureL.png").getImage();
     Image figureJ = new ImageIcon("src/main/resources/FigureJ.png").getImage();
     Image figureI = new ImageIcon("src/main/resources/FigureI.png").getImage();
@@ -23,9 +20,7 @@ public class PaintQueue extends JPanel implements IQueueListener {
     Image figureS = new ImageIcon("src/main/resources/FigureS.png").getImage();
     Image figureZ = new ImageIcon("src/main/resources/FigureZ.png").getImage();
 
-    public PaintQueue(JFrame frame){
-        this.frame = frame;
-    }
+
 
     @Override
     public void paintQueue(List<Figure> queue) {
@@ -65,14 +60,14 @@ public class PaintQueue extends JPanel implements IQueueListener {
                 this.add(drawImage);
             }
         }
-    frame.repaint();
+        validate();
         repaint();
     }
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-//        g.setColor(Color.LIGHT_GRAY);
-//        g.fillRect(0,0,200,1000);
+        g.setColor(Color.LIGHT_GRAY);
+        g.fillRect(0,0,200,1000);
     }
 }
 
