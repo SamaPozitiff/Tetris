@@ -1,5 +1,6 @@
 package main.java.manager;
 
+import main.java.figure.Field;
 import main.java.figure.Figure;
 
 //НЕ КОНТРОЛЛЕР
@@ -7,10 +8,13 @@ public class FigureControl {
     IFigureManager figureManager;
     IField field;
     Figure figure;
+    Figure inReserve;
+    IReserveListener reserveListener;
 
-    public FigureControl(IField field, IFigureManager figureManager) {
+    public FigureControl(IField field, IFigureManager figureManager, IReserveListener reserveListener) {
         this.figureManager = figureManager;
         this.field = field;
+        this.reserveListener = reserveListener;
     }
 
     public void getFigureFromQueue() {
@@ -121,7 +125,19 @@ public class FigureControl {
         }
         return true;
     }
-
+    public void reserveFigure(){
+        if (inReserve == null){
+            inReserve = figure;
+            getFigureFromQueue();
+        }else {
+            Figure intermediateFigure = inReserve;
+            intermediateFigure.setAbsoluteX(figure.getAbsoluteX());
+            intermediateFigure.setAbcoluteY(figure.getAbsoluteY());
+            inReserve = figure;
+            figure = intermediateFigure;
+        }
+    reserveListener.paintReserveFigure(inReserve);
+    }
 
 
 }

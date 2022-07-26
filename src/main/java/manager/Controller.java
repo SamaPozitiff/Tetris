@@ -45,6 +45,9 @@ public class Controller implements KeyListener {
         if (key.equalsIgnoreCase("w") || key.equalsIgnoreCase("ц")){
             figureControl.dropDown();
         }
+        if(key.equalsIgnoreCase(" ")){
+            figureControl.reserveFigure();
+        }
         paintGame.repaint();
     }
 

@@ -51,6 +51,14 @@ public abstract class Figure {
         absoluteX = x;
     }
 
+    public int getAbsoluteX(){
+        return absoluteX;
+    }
+
+    public int getAbsoluteY(){
+        return absoluteY;
+    }
+
     public void goDown() {
         absoluteY++;
     }

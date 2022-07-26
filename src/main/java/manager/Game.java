@@ -6,6 +6,7 @@ import java.util.List;
 import main.java.figure.Block;
 import main.java.figure.Field;
 import main.java.figure.Figure;
+import main.java.swing.DrawReserve;
 import main.java.swing.IPaintGame;
 import main.java.swing.PaintQueue;
 
@@ -14,11 +15,13 @@ public class Game {
     FigureManager figureManager;
     FigureControl figureControl;
     IPaintGame paintGame;
+    IReserveListener reserveListener;
 
-    public Game(IQueueListener queueListener, IPaintGame paintGame) {
+    public Game(IQueueListener queueListener, IPaintGame paintGame, IReserveListener drawReserve) {
         field = new Field();
         figureManager = new FigureManager(queueListener);
-        figureControl = new FigureControl(field, figureManager);
+        reserveListener = drawReserve;
+        figureControl = new FigureControl(field, figureManager, reserveListener);
         figureControl.getFigureFromQueue();
         this.paintGame = paintGame;
     }

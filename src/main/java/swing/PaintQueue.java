@@ -12,13 +12,13 @@ public class PaintQueue extends JPanel implements IQueueListener {
     int typeOfFigure;
     ArrayList<Figure> queue;
     DrawImage drawImage;
-    Image figureL = new ImageIcon("src/main/resources/FigureL.png").getImage();
-    Image figureJ = new ImageIcon("src/main/resources/FigureJ.png").getImage();
-    Image figureI = new ImageIcon("src/main/resources/FigureI.png").getImage();
-    Image figureO = new ImageIcon("src/main/resources/FigureO.png").getImage();
-    Image figureT = new ImageIcon("src/main/resources/FigureT.png").getImage();
-    Image figureS = new ImageIcon("src/main/resources/FigureS.png").getImage();
-    Image figureZ = new ImageIcon("src/main/resources/FigureZ.png").getImage();
+    public static final Image FIGURE_L = new ImageIcon("src/main/resources/FigureL.png").getImage();
+    public static final Image FIGURE_J = new ImageIcon("src/main/resources/FigureJ.png").getImage();
+    public static final Image FIGURE_I = new ImageIcon("src/main/resources/FigureI.png").getImage();
+    public static final Image FIGURE_O = new ImageIcon("src/main/resources/FigureO.png").getImage();
+    public static final Image FIGURE_T = new ImageIcon("src/main/resources/FigureT.png").getImage();
+    public static final Image FIGURE_S = new ImageIcon("src/main/resources/FigureS.png").getImage();
+    public static final Image FIGURE_Z = new ImageIcon("src/main/resources/FigureZ.png").getImage();
 
 
 
@@ -36,27 +36,27 @@ public class PaintQueue extends JPanel implements IQueueListener {
             drawImage.setSize(this.getWidth(), this.getHeight());
             typeOfFigure = queue.get(i).getTypeOfFigure();
             if (typeOfFigure == Figure.FIGURE_I) {
-                drawImage.drawImage(figureI);
+                drawImage.drawImage(FIGURE_I);
                 this.add(drawImage);
 
             } else if (typeOfFigure == Figure.FIGURE_L) {
 
-                drawImage.drawImage(figureL);
+                drawImage.drawImage(FIGURE_L);
                 this.add(drawImage);
             } else if (typeOfFigure == Figure.FIGURE_J) {
-                drawImage.drawImage(figureJ);
+                drawImage.drawImage(FIGURE_J);
                 this.add(drawImage);
             } else if (typeOfFigure == Figure.FIGURE_O) {
-                drawImage.drawImage(figureO);
+                drawImage.drawImage(FIGURE_O);
                 this.add(drawImage);
             } else if (typeOfFigure == Figure.FIGURE_S) {
-                drawImage.drawImage(figureS);
+                drawImage.drawImage(FIGURE_S);
                 this.add(drawImage);
             } else if (typeOfFigure == Figure.FIGURE_Z) {
-                drawImage.drawImage(figureZ);
+                drawImage.drawImage(FIGURE_Z);
                 this.add(drawImage);
             } else {
-                drawImage.drawImage(figureT);
+                drawImage.drawImage(FIGURE_T);
                 this.add(drawImage);
             }
         }

@@ -13,22 +13,25 @@ public class Frame {
     static PaintComponent paintGame;
     static Controller controller;
     static PaintQueue paintQueue;
+    static DrawReserve drawReserve;
 
     public static void initialize() {
         paintGame = new PaintComponent();
         paintQueue = new PaintQueue();
-        game = new Game(paintQueue, paintGame);
+        drawReserve = new DrawReserve();
+        game = new Game(paintQueue, paintGame, drawReserve);
         controller = new Controller(game,
                 paintGame);
     }
 
     public static void buildGUI() {
-        jFrame.setSize(1250, 1050);
+        jFrame.setSize(1500, 1050);
         jFrame.setLayout(new FlowLayout());
         paintGame.setPreferredSize(new Dimension(1000,1000));
         paintQueue.setPreferredSize(new Dimension(200,1000));
-
-       jFrame.getContentPane().add(paintGame);
+        drawReserve.setPreferredSize(new Dimension(200,1000));
+        jFrame.getContentPane().add(drawReserve);
+        jFrame.getContentPane().add(paintGame);
         jFrame.getContentPane().add(paintQueue);
 
        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
