@@ -22,7 +22,7 @@ public class DrawReserve extends JPanel implements IReserveListener {
         drawImage = new DrawImage();
         drawImage.setSize(this.getWidth(), this.getHeight());
 
-        if(typeOfFigure == Figure.FIGURE_T){
+        if (typeOfFigure == Figure.FIGURE_T) {
             drawImage.drawImage(PaintQueue.FIGURE_T);
             this.add(drawImage);
         } else if (typeOfFigure == Figure.FIGURE_I) {
@@ -34,13 +34,13 @@ public class DrawReserve extends JPanel implements IReserveListener {
         } else if (typeOfFigure == Figure.FIGURE_J) {
             drawImage.drawImage(PaintQueue.FIGURE_J);
             this.add(drawImage);
-        } else if (typeOfFigure == Figure.FIGURE_Z){
+        } else if (typeOfFigure == Figure.FIGURE_Z) {
             drawImage.drawImage(PaintQueue.FIGURE_Z);
             this.add(drawImage);
-        } else if (typeOfFigure == Figure.FIGURE_S){
+        } else if (typeOfFigure == Figure.FIGURE_S) {
             drawImage.drawImage(PaintQueue.FIGURE_S);
             this.add(drawImage);
-        } else{
+        } else {
             drawImage.drawImage(PaintQueue.FIGURE_L);
             this.add(drawImage);
         }

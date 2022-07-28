@@ -26,11 +26,15 @@ public class Controller implements KeyListener {
         if (key.equalsIgnoreCase("d") || key.equalsIgnoreCase("в")) {
             figureControl.goRight();
         }
+        if (key.equalsIgnoreCase("s")||key.equalsIgnoreCase("ы")){
+            figureControl.goDown();
+        }
         paintGame.repaint();
     }
 
     public void keyPressed(KeyEvent e) {
-        // TODO Auto-generated method stub
+        String key = String.valueOf(e.getKeyChar());
+
 
     }
 

@@ -125,18 +125,18 @@ public class FigureControl {
         }
         return true;
     }
-    public void reserveFigure(){
-        if (inReserve == null){
+    public void reserveFigure() {
+        if (inReserve == null) {
             inReserve = figure;
             getFigureFromQueue();
-        }else {
+        } else {
             Figure intermediateFigure = inReserve;
             intermediateFigure.setAbsoluteX(figure.getAbsoluteX());
             intermediateFigure.setAbcoluteY(figure.getAbsoluteY());
             inReserve = figure;
             figure = intermediateFigure;
         }
-    reserveListener.paintReserveFigure(inReserve);
+        reserveListener.paintReserveFigure(inReserve);
     }
 
 
