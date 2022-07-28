@@ -1,6 +1,5 @@
 package main.java.manager;
 
-import main.java.figure.Field;
 import main.java.figure.Figure;
 
 //НЕ КОНТРОЛЛЕР
@@ -8,7 +7,7 @@ public class FigureControl {
     IFigureManager figureManager;
     IField field;
     Figure figure;
-    Figure inReserve;
+    Figure reserve;
     IReserveListener reserveListener;
 
     public FigureControl(IField field, IFigureManager figureManager, IReserveListener reserveListener) {
@@ -95,15 +94,11 @@ public class FigureControl {
     private boolean canRotateRight() {
         Figure testFigure = figure.cloneFigure(figure);
         testFigure.rotateRight();
-        for (int i = 0; i < Figure.SIZE; i++) {
-            if (field.isBlockEmpty(testFigure.getBlock(i).getX(), testFigure.getBlock(i).getY()) == false
-                    || testFigure.getBlock(i).getX() < 0
-                    || testFigure.getBlock(i).getX() >= IField.FIELD_X
-                    || testFigure.getBlock(i).getY() >= IField.FIELD_Y) {
-                return false;
-            }
+        if (canRotate(testFigure)){
+            return true;
+        }else{
+            return false;
         }
-        return true;
     }
 
     public void rotateLeft() {
@@ -115,28 +110,38 @@ public class FigureControl {
     private boolean canRotateLeft() {
         Figure testFigure = figure.cloneFigure(figure);
         testFigure.rotateLeft();
+        if (canRotate(testFigure)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    private boolean canRotate(Figure figure){
         for (int i = 0; i < Figure.SIZE; i++) {
-            if (field.isBlockEmpty(testFigure.getBlock(i).getX(), testFigure.getBlock(i).getY()) == false
-                    || testFigure.getBlock(i).getX() < 0
-                    || testFigure.getBlock(i).getX() >= IField.FIELD_X
-                    || testFigure.getBlock(i).getY() >= IField.FIELD_Y) {
+            if (field.isBlockEmpty(figure.getBlock(i).getX(), figure.getBlock(i).getY()) == false
+                    || figure.getBlock(i).getX() < 0
+                    || figure.getBlock(i).getX() >= IField.FIELD_X
+                    || figure.getBlock(i).getY() >= IField.FIELD_Y) {
                 return false;
             }
         }
         return true;
     }
+
+
     public void reserveFigure() {
-        if (inReserve == null) {
-            inReserve = figure;
+        if (reserve == null) {
+            reserve = figure;
             getFigureFromQueue();
         } else {
-            Figure intermediateFigure = inReserve;
+            Figure intermediateFigure = reserve;
             intermediateFigure.setAbsoluteX(figure.getAbsoluteX());
             intermediateFigure.setAbcoluteY(figure.getAbsoluteY());
-            inReserve = figure;
+            reserve = figure;
             figure = intermediateFigure;
         }
-        reserveListener.paintReserveFigure(inReserve);
+        reserveListener.paintReserveFigure(reserve);
     }
 
 
