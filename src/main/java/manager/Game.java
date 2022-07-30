@@ -10,7 +10,9 @@ import main.java.swing.DrawReserve;
 import main.java.swing.IPaintGame;
 import main.java.swing.PaintQueue;
 
-public class Game {
+import javax.swing.*;
+
+public class Game extends JPanel{
     Field field;
     FigureManager figureManager;
     FigureControl figureControl;
@@ -41,6 +43,16 @@ public class Game {
 
     public void makeGameStep() {
         figureControl.goDown();
+        if (figureControl.isGameOver()){
+            int result = JOptionPane.showConfirmDialog(this, "GAME OVER" + "\n" + "Начать сначала?", "GAME OVER", JOptionPane.PLAIN_MESSAGE);
+            if (result == JOptionPane.OK_OPTION){
+                figureControl.setGameOver(false);
+                field.makeFieldClean();
+                startGame();
+                repaint();
+
+            }
+        }
     }
 
     public List<Block> getAllBlocks() {

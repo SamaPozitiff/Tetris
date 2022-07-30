@@ -4,11 +4,12 @@ import main.java.figure.Figure;
 
 //НЕ КОНТРОЛЛЕР
 public class FigureControl {
-    IFigureManager figureManager;
-    IField field;
-    Figure figure;
-    Figure reserve;
-    IReserveListener reserveListener;
+    private IFigureManager figureManager;
+    private IField field;
+    private Figure figure;
+    private Figure reserve;
+    private IReserveListener reserveListener;
+    private static boolean gameOver = false;
 
     public FigureControl(IField field, IFigureManager figureManager, IReserveListener reserveListener) {
         this.figureManager = figureManager;
@@ -16,9 +17,29 @@ public class FigureControl {
         this.reserveListener = reserveListener;
     }
 
+    public boolean isGameOver(){
+        return gameOver;
+    }
+
+    public void setGameOver(boolean gameOver){
+        this.gameOver = gameOver;
+    }
+
+    public void checkGameOver(){
+        for (int i = 0; i < Figure.SIZE; i++){
+            if (field.isBlockEmpty(figure.getBlock(i).getX(), figure.getBlock(i).getY()) == false){
+               gameOver = true;
+               break;
+            }else {
+                gameOver = false;
+            }
+        }
+    }
+
     public void getFigureFromQueue() {
         figure = figureManager.getNextFigure();
         figure.setAbsoluteX(IField.FIELD_X / 2);
+        checkGameOver();
     }
 
     public Figure getFigure(){

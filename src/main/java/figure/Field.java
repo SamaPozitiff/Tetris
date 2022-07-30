@@ -35,6 +35,10 @@ public class Field implements IField {
         checkFullRow();
     }
 
+    public void makeFieldClean(){
+        blocks.removeAll(blocks);
+    }
+
     private void removeBlocksRow(int y) {
 
         Iterator<Block> iterator = blocks.iterator();
