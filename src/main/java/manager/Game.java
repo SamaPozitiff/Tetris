@@ -6,32 +6,43 @@ import java.util.List;
 import main.java.figure.Block;
 import main.java.figure.Field;
 import main.java.figure.Figure;
-import main.java.swing.DrawReserve;
-import main.java.swing.IPaintGame;
-import main.java.swing.PaintQueue;
+import main.java.swing.Frame;
+import main.java.swing.PaintComponent;
 
-import javax.swing.*;
 
-public class Game extends JPanel{
+public class Game implements Observable {
     Field field;
     FigureManager figureManager;
     FigureControl figureControl;
-    IPaintGame paintGame;
-    IReserveListener reserveListener;
+    private List<Observer> observers;
 
-    public Game(IQueueListener queueListener, IPaintGame paintGame, IReserveListener drawReserve) {
+    public Game() {
+        observers = new ArrayList<>();
         field = new Field();
-        figureManager = new FigureManager(queueListener);
-        reserveListener = drawReserve;
-        figureControl = new FigureControl(field, figureManager, reserveListener);
-        figureControl.getFigureFromQueue();
-        this.paintGame = paintGame;
+        figureManager = new FigureManager();
+        figureControl = new FigureControl(field, figureManager);
+
+    }
+
+    public Observable getGameOverObservable(){
+        return this;
+    }
+
+    public Observable getFigureObservable(){
+        return figureControl;
+    }
+
+    public Observable getQueueObservable(){
+        return figureManager;
     }
 
     public void startGame() {
-        while (true) {
+        figureManager.resetQueue();
+        field.makeFieldClean();
+        figureControl.getFigureFromQueue();
+        while (figureControl.isGameOver() == false) {
             makeGameStep();
-            paintGame.paintGame(getAllBlocks());
+            notifyObserver();
             try {
                 Thread.sleep(300);
             } catch (InterruptedException e) {
@@ -39,19 +50,13 @@ public class Game extends JPanel{
                 e.printStackTrace();
             }
         }
+
     }
 
     public void makeGameStep() {
         figureControl.goDown();
-        if (figureControl.isGameOver()){
-            int result = JOptionPane.showConfirmDialog(this, "GAME OVER" + "\n" + "Начать сначала?", "GAME OVER", JOptionPane.PLAIN_MESSAGE);
-            if (result == JOptionPane.OK_OPTION){
-                figureControl.setGameOver(false);
-                field.makeFieldClean();
-                startGame();
-                repaint();
-
-            }
+        if (figureControl.isGameOver()) {
+            notifyGameOver();
         }
     }
 
@@ -67,6 +72,28 @@ public class Game extends JPanel{
     }
 
 
+    @Override
+    public void addObserver(Observer observer) {
+        observers.add(observer);
+    }
 
+    @Override
+    public void deleteObserver(Observer observer) {
+        observers.remove(observer);
+    }
+
+    public void notifyGameOver() {
+        observers.stream()
+                .filter(e -> e instanceof Frame)
+                .forEach(e -> e.update(true));
+    }
+
+    @Override
+    public void notifyObserver() {
+
+        observers.stream()
+                .filter(e -> e instanceof PaintComponent)
+                .forEach(e -> e.update(getAllBlocks()));
+    }
 }
 

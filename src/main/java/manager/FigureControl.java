@@ -1,34 +1,38 @@
 package main.java.manager;
 
 import main.java.figure.Figure;
+import main.java.swing.DrawReserve;
+import main.java.swing.PaintQueue;
+
+import java.util.ArrayList;
+import java.util.List;
 
 //НЕ КОНТРОЛЛЕР
-public class FigureControl {
+public class FigureControl implements Observable{
     private IFigureManager figureManager;
     private IField field;
     private Figure figure;
     private Figure reserve;
-    private IReserveListener reserveListener;
     private static boolean gameOver = false;
+    private List<Observer> observers;
 
-    public FigureControl(IField field, IFigureManager figureManager, IReserveListener reserveListener) {
+    public FigureControl(IField field, IFigureManager figureManager) {
+        observers = new ArrayList<>();
         this.figureManager = figureManager;
         this.field = field;
-        this.reserveListener = reserveListener;
     }
 
     public boolean isGameOver(){
         return gameOver;
     }
 
-    public void setGameOver(boolean gameOver){
-        this.gameOver = gameOver;
-    }
 
     public void checkGameOver(){
         for (int i = 0; i < Figure.SIZE; i++){
             if (field.isBlockEmpty(figure.getBlock(i).getX(), figure.getBlock(i).getY()) == false){
                gameOver = true;
+                reserve = null;
+                notifyObserver();
                break;
             }else {
                 gameOver = false;
@@ -162,9 +166,24 @@ public class FigureControl {
             reserve = figure;
             figure = intermediateFigure;
         }
-        reserveListener.paintReserveFigure(reserve);
+        notifyObserver();
     }
 
 
+    @Override
+    public void addObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void deleteObserver(Observer observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObserver() {
+        observers.stream().forEach(e -> e.update(reserve));
+
+    }
 }
 

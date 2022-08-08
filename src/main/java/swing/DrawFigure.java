@@ -7,13 +7,13 @@ import java.awt.*;
 
 public class DrawFigure extends JPanel {
     private Image figure;
-    private Image figureL = new ImageIcon("src/main/resources/FigureL.png").getImage();
-    private Image figureJ = new ImageIcon("src/main/resources/FigureJ.png").getImage();
-    private Image figureI = new ImageIcon("src/main/resources/FigureI.png").getImage();
-    private Image figureO = new ImageIcon("src/main/resources/FigureO.png").getImage();
-    private Image figureT = new ImageIcon("src/main/resources/FigureT.png").getImage();
-    private Image figureS = new ImageIcon("src/main/resources/FigureS.png").getImage();
-    private Image figureZ = new ImageIcon("src/main/resources/FigureZ.png").getImage();
+    private final Image  figureL = new ImageIcon("src/main/resources/FigureL.png").getImage();
+    private final Image figureJ = new ImageIcon("src/main/resources/FigureJ.png").getImage();
+    private final Image figureI = new ImageIcon("src/main/resources/FigureI.png").getImage();
+    private final Image figureO = new ImageIcon("src/main/resources/FigureO.png").getImage();
+    private final Image figureT = new ImageIcon("src/main/resources/FigureT.png").getImage();
+    private final Image figureS = new ImageIcon("src/main/resources/FigureS.png").getImage();
+    private final Image figureZ = new ImageIcon("src/main/resources/FigureZ.png").getImage();
 
 
     public void drawImage(int typeOfFigure) {
@@ -36,7 +36,7 @@ public class DrawFigure extends JPanel {
     }
 
     public void paintComponent (Graphics g) {
-        g.drawImage(figure, 0, 0, 200, 200, this);
+        g.drawImage(figure, 25, 10, 200, 200, this);
 
     }
 

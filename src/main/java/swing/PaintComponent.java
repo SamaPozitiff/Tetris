@@ -13,19 +13,28 @@ import javax.swing.JPanel;
 import main.java.figure.Block;
 import main.java.figure.Field;
 import main.java.figure.Figure;
+import main.java.manager.Observable;
+import main.java.manager.Observer;
 
-public class PaintComponent extends JPanel implements IPaintGame{
+public class PaintComponent extends JPanel implements Observer {
     final int CELL = 50;
     ArrayList<Block> blocks;
     Image blockImage;
+    Image backgroundImage = new ImageIcon("src/main/resources/Background.png").getImage();
 
-    public PaintComponent(){
-
+    public PaintComponent(Observable observable){
+        observable.addObserver(this);
+        blocks = new ArrayList<>();
     }
 
     public void paintComponent(Graphics g) {
-        g.setColor(getBackground());
-        g.fillRect(0, 0, 1000, 1000);
+        for(int k = 0; k < 1000;){
+            for (int n = 0; n<1000;){
+                g.drawImage(backgroundImage, k, n, 500,500, this);
+                n+=500;
+            }
+        k+=500;
+        }
         g.setColor(Color.gray);
         for (int i = 0; i < Field.FIELD_X; i++) {
             for (int j = 0; j < Field.FIELD_Y; j ++) {
@@ -58,8 +67,8 @@ public class PaintComponent extends JPanel implements IPaintGame{
     }
 
     @Override
-    public void paintGame(List<Block> blocks) {
-        this.blocks = (ArrayList<Block>) blocks;
+    public void update (Object obj) {
+        this.blocks = (ArrayList<Block>) obj;
         repaint();
     }
 }

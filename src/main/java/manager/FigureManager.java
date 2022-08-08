@@ -1,5 +1,6 @@
 package main.java.manager;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -8,15 +9,22 @@ import main.java.figure.Field;
 import main.java.figure.Figure;
 import main.java.figure.GenerateFigure;
 
-public class FigureManager implements IFigureManager{
-    List<Figure> queue;
-    GenerateFigure generate;
-    IQueueListener queueListener;
+public class FigureManager implements Observable, IFigureManager{
+    private List<Figure> queue;
+    private GenerateFigure generate;
+    private List<Observer> observers;
 
-    public FigureManager(IQueueListener queueListener) {
-        queue = new LinkedList<Figure>();
+    public FigureManager() {
+        observers = new ArrayList<>();
+
         generate = new GenerateFigure();
-        this.queueListener = queueListener;
+        resetQueue();
+
+
+    }
+
+    public void resetQueue(){
+        queue = new LinkedList<>();
         addFigureAtQueue();
         addFigureAtQueue();
         addFigureAtQueue();
@@ -31,7 +39,7 @@ public class FigureManager implements IFigureManager{
     @Override
     public Figure getNextFigure() {
         addFigureAtQueue();
-        queueListener.paintQueue(queue);
+        notifyObserver();
         return poll();
     }
 
@@ -39,6 +47,21 @@ public class FigureManager implements IFigureManager{
         Figure firstFigure = queue.get(0);
         queue.remove(0);
         return firstFigure;
+    }
+
+    @Override
+    public void addObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void deleteObserver(Observer observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObserver() {
+        observers.stream().forEach(e -> e.update(queue));
     }
 }
 

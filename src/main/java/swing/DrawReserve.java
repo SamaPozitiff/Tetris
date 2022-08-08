@@ -1,21 +1,31 @@
 package main.java.swing;
 
 import main.java.figure.Figure;
-import main.java.manager.IReserveListener;
+import main.java.manager.Observable;
+import main.java.manager.Observer;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class DrawReserve extends JPanel implements IReserveListener {
-    private int typeOfFigure;
-    DrawFigure drawFigure;
+public class DrawReserve extends JPanel implements Observer {
 
+    DrawFigure drawFigure;
+    public DrawReserve(Observable observable){
+        observable.addObserver(this);
+    }
 
 
 
     @Override
-    public void paintReserveFigure(Figure figure) {
-        this.typeOfFigure = figure.getTypeOfFigure();
+    public void update (Object obj) {
+
+        if(obj == null){
+            removeAll();
+            repaint();
+            return;
+        }
+
+        int typeOfFigure = ((Figure)obj).getTypeOfFigure();
         this.removeAll();
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.add(new JLabel("Фигура в резерве:"));

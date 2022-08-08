@@ -1,5 +1,6 @@
 package main.java.manager;
 
+import main.java.swing.Frame;
 import main.java.swing.PaintComponent;
 
 import java.awt.event.KeyEvent;
@@ -7,11 +8,11 @@ import java.awt.event.KeyListener;
 
 public class Controller implements KeyListener {
     Game game;
-    PaintComponent paintGame;
+    Frame paintGame;
     FigureControl figureControl;
 
 
-    public Controller(Game game, PaintComponent paintGame) {
+    public Controller(Game game, Frame paintGame) {
         this.game = game;
         this.paintGame = paintGame;
         figureControl = game.figureControl;

@@ -1,24 +1,30 @@
 package main.java.swing;
 
 import main.java.figure.Figure;
-import main.java.manager.IQueueListener;
+import main.java.manager.Observable;
+import main.java.manager.Observer;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PaintQueue extends JPanel implements IQueueListener {
+public class PaintQueue extends JPanel implements Observer {
     int typeOfFigure;
     ArrayList<Figure> queue;
     DrawFigure drawFigure;
+    Image tree = new ImageIcon("src/main/resources/House.png").getImage();
 
+    public PaintQueue(Observable observable){
+        observable.addObserver(this);
+    }
 
+//TODO Слушатель FigureControl
 
     @Override
-    public void paintQueue(List<Figure> queue) {
+    public void update (Object obj) {
         this.queue = new ArrayList<Figure>();
-        this.queue.addAll(queue);
+        this.queue.addAll((List<Figure>)obj);
         this.removeAll();
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.add(new JLabel("Очередь:"));
@@ -33,10 +39,10 @@ public class PaintQueue extends JPanel implements IQueueListener {
         repaint();
     }
 
+
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        g.setColor(Color.LIGHT_GRAY);
-        g.fillRect(0,0,200,1000);
+        g.drawImage(tree, 0, 0, this);
     }
 }
 
