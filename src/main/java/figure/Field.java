@@ -1,18 +1,23 @@
 package main.java.figure;
 
+import main.java.manager.HighScore;
 import main.java.manager.IField;
+import main.java.manager.Observable;
+import main.java.manager.Observer;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Field implements IField {
+public class Field implements IField, Observable {
     ArrayList<Block> blocks;
     public static final int FIELD_Y = 20;
     public static final int FIELD_X = 20;
+    private List<Observer> observers;
 
     public Field() {
         blocks = new ArrayList<Block>();
+        observers = new ArrayList<>();
     }
 
     public ArrayList<Block> getBlocks() {
@@ -68,11 +73,30 @@ public class Field implements IField {
     }
 
     private void checkFullRow() {
+        int removedRows = 0;
         for (int i = 0; i < Field.FIELD_Y; i++) {
             if (countBlocksInRow(i) == Field.FIELD_X) {
                 removeBlocksRow(i);
+                removedRows++;
                 moveRowsDown(i);
             }
         }
+        HighScore.incrementHighScore(removedRows);
+        notifyObserver();
+    }
+
+    @Override
+    public void addObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void deleteObserver(Observer observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObserver() {
+        observers.stream().forEach(e -> e.update(HighScore.getHighScore()));
     }
 }

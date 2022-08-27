@@ -1,6 +1,7 @@
 package main.java.swing;
 
 import main.java.figure.Figure;
+import main.java.manager.HighScore;
 import main.java.manager.Observable;
 import main.java.manager.Observer;
 
@@ -12,6 +13,7 @@ public class DrawReserve extends JPanel implements Observer {
     DrawFigure drawFigure;
     public DrawReserve(Observable observable){
         observable.addObserver(this);
+
     }
 
 
@@ -31,16 +33,15 @@ public class DrawReserve extends JPanel implements Observer {
         this.add(new JLabel("Фигура в резерве:"));
         drawFigure = new DrawFigure();
         drawFigure.setSize(this.getWidth(), this.getHeight());
-            drawFigure.drawImage(typeOfFigure);
-            this.add(drawFigure);
+        drawFigure.drawImage(typeOfFigure);
+        this.add(drawFigure);
         validate();
         repaint();
     }
-
-    public void paintComponent(Graphics g){
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.setColor(Color.LIGHT_GRAY);
-        g.fillRect(0,0,200,1000);
+        this.setBackground(new Color(0,0,0,0));
     }
+
 
 }

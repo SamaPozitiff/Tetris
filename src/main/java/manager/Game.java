@@ -36,7 +36,10 @@ public class Game implements Observable {
         return figureManager;
     }
 
+    public Observable getFieldObservable() {return field;}
+
     public void startGame() {
+        HighScore.resetHighScore();
         figureManager.resetQueue();
         field.makeFieldClean();
         figureControl.getFigureFromQueue();
