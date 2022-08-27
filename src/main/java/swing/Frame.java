@@ -3,7 +3,6 @@ package main.java.swing;
 
 import main.java.manager.Controller;
 import main.java.manager.Game;
-import main.java.manager.Observable;
 import main.java.manager.Observer;
 
 import javax.swing.*;
@@ -13,9 +12,10 @@ public class Frame implements Observer {
     private final JFrame jFrame;
     Game game;
     private PaintComponent paintGame;
-    private Controller controller;
     private PaintQueue paintQueue;
     private DrawReserve drawReserve;
+    private LeftPanel leftPanel;
+    private DrawHighScore drawHighscore;
 
 
     public Frame(Game game){
@@ -31,12 +31,14 @@ public class Frame implements Observer {
 
 
 
-        jFrame.setSize(1500, 1050);
+        jFrame.setSize(1600, 1050);
         jFrame.setLayout(new FlowLayout());
         paintGame.setPreferredSize(new Dimension(1000,1000));
         paintQueue.setPreferredSize(new Dimension(250,1000));
-        drawReserve.setPreferredSize(new Dimension(200,1000));
-        jFrame.getContentPane().add(drawReserve);
+        leftPanel.setPreferredSize(new Dimension(250,1000));
+        drawReserve.setPreferredSize(new Dimension(250, 250));
+        drawHighscore.setPreferredSize(new Dimension(250, 250));
+        jFrame.getContentPane().add(leftPanel);
         jFrame.getContentPane().add(paintGame);
         jFrame.getContentPane().add(paintQueue);
 
@@ -52,6 +54,8 @@ public class Frame implements Observer {
         paintGame = new PaintComponent(game.getGameOverObservable());
         paintQueue = new PaintQueue(game.getQueueObservable());
         drawReserve = new DrawReserve(game.getFigureObservable());
+        drawHighscore = new DrawHighScore(game.getFieldObservable());
+        leftPanel = new LeftPanel(drawReserve, drawHighscore);
     }
 
     public void showGameOver(){
