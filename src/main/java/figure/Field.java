@@ -12,7 +12,7 @@ import java.util.List;
 public class Field implements IField, Observable {
     ArrayList<Block> blocks;
     public static final int FIELD_Y = 20;
-    public static final int FIELD_X = 20;
+    public static final int FIELD_X = 10;
     private List<Observer> observers;
 
     public Field() {

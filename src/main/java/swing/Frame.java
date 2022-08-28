@@ -31,9 +31,9 @@ public class Frame implements Observer {
 
 
 
-        jFrame.setSize(1600, 1050);
+        jFrame.setSize(1100, 1050);
         jFrame.setLayout(new FlowLayout());
-        paintGame.setPreferredSize(new Dimension(1000,1000));
+        paintGame.setPreferredSize(new Dimension(500,1000));
         paintQueue.setPreferredSize(new Dimension(250,1000));
         leftPanel.setPreferredSize(new Dimension(250,1000));
         drawReserve.setPreferredSize(new Dimension(250, 250));
