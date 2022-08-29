@@ -13,18 +13,20 @@ public class Tests {
         HighScoreDAO highScoreDAO = new HighScoreDAO();
         Player player = new Player();
         player.setName("Стёпочка");
-        Configuration config = new Configuration();
-        config.configure();
-        SessionFactory sessionFactory = config.buildSessionFactory();
-        Session session = sessionFactory.getCurrentSession();
-        session.beginTransaction();
+        Session session = highScoreDAO.openSessionWithTransaction();
         session.save(player);
-        session.getTransaction().commit();
+        System.out.println("Сохранили игрока" + player.getId());
+        highScoreDAO.commitTransaction();
+        player.setName("Степан");
+        highScoreDAO.openTransaction();
         HighScoreDTO highScoreDTO= new HighScoreDTO();
         highScoreDTO.setHighScore(9999L);
         highScoreDTO.setPlayer(player);
         highScoreDAO.saveScore(highScoreDTO);
-        assert highScoreDAO.findAll().size() == 1;
+        highScoreDAO.commitTransaction();
+        highScoreDAO.openTransaction();
+        assert highScoreDAO.findAll().size() > 0;
+        highScoreDAO.closeSessionWithTransaction();
     }
 
 }
