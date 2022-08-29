@@ -1,4 +1,4 @@
-package main.java.figure;
+package figure;
 
 public class Block {
     private int x;

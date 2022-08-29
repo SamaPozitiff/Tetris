@@ -1,13 +1,13 @@
-package main.java.manager;
+package manager;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-import main.java.figure.Field;
-import main.java.figure.Figure;
-import main.java.figure.GenerateFigure;
+import figure.Field;
+import figure.Figure;
+import figure.GenerateFigure;
 
 public class FigureManager implements Observable, IFigureManager{
     private List<Figure> queue;

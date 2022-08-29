@@ -1,13 +1,13 @@
-package main.java.manager;
+package manager;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import main.java.figure.Block;
-import main.java.figure.Field;
-import main.java.figure.Figure;
-import main.java.swing.Frame;
-import main.java.swing.PaintComponent;
+import figure.Block;
+import figure.Field;
+import figure.Figure;
+import swing.Frame;
+import swing.PaintComponent;
 
 
 public class Game implements Observable {

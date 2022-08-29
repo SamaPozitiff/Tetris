@@ -1,6 +1,6 @@
-package main.java.manager;
+package manager;
 
-import main.java.figure.Block;
+import figure.Block;
 
 import java.util.List;
 

@@ -1,8 +1,8 @@
-package main.java.swing;
+package swing;
 
-import main.java.figure.Figure;
-import main.java.manager.Observable;
-import main.java.manager.Observer;
+import figure.Figure;
+import manager.Observable;
+import manager.Observer;
 
 import javax.swing.*;
 import java.awt.*;

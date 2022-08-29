@@ -1,4 +1,4 @@
-package main.java.manager;
+package manager;
 
 public interface Observable {
      void addObserver(Observer observer);

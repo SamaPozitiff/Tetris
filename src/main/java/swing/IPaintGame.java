@@ -1,6 +1,6 @@
-package main.java.swing;
+package swing;
 
-import main.java.figure.Block;
+import figure.Block;
 
 import java.util.List;
 

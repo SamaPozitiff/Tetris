@@ -1,4 +1,4 @@
-package main.java.swing;
+package swing;
 
 
 import java.awt.Color;
@@ -10,11 +10,11 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import main.java.figure.Block;
-import main.java.figure.Field;
-import main.java.figure.Figure;
-import main.java.manager.Observable;
-import main.java.manager.Observer;
+import figure.Block;
+import figure.Field;
+import figure.Figure;
+import manager.Observable;
+import manager.Observer;
 
 public class PaintComponent extends JPanel implements Observer {
     final int CELL = 50;

@@ -1,9 +1,9 @@
-package main.java.swing;
+package swing;
 
 
-import main.java.manager.Controller;
-import main.java.manager.Game;
-import main.java.manager.Observer;
+import manager.Controller;
+import manager.Game;
+import manager.Observer;
 
 import javax.swing.*;
 import java.awt.*;

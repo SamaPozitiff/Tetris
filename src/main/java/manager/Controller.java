@@ -1,7 +1,7 @@
-package main.java.manager;
+package manager;
 
-import main.java.swing.Frame;
-import main.java.swing.PaintComponent;
+import swing.Frame;
+import swing.PaintComponent;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

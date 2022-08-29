@@ -1,8 +1,8 @@
-package main.java.manager;
+package manager;
 
-import main.java.figure.Figure;
-import main.java.swing.DrawReserve;
-import main.java.swing.PaintQueue;
+import figure.Figure;
+import swing.DrawReserve;
+import swing.PaintQueue;
 
 import java.util.ArrayList;
 import java.util.List;
