@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "player")
-public class Player {
+public class PlayerDTO {
     @Id
     @GeneratedValue
     @Column(name = "id")

@@ -21,6 +21,5 @@ public class Main {
         initialize();
         frame.buildGUI();
         game.startGame();
-
     }
 }

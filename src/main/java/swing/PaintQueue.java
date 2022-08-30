@@ -19,7 +19,6 @@ public class PaintQueue extends JPanel implements Observer {
         observable.addObserver(this);
     }
 
-//TODO Слушатель FigureControl
 
     @Override
     public void update (Object obj) {

@@ -1,8 +1,6 @@
 package manager;
 
 
-import org.hibernate.engine.internal.Cascade;
-
 import javax.persistence.*;
 @Entity
 @Table (name = "score_board")
@@ -15,7 +13,7 @@ public class HighScoreDTO {
     private Long highScore;
     @ManyToOne
     @JoinColumn(name = "player_id")
-    private Player player;
+    private PlayerDTO playerDTO;
 
 
     public Long getHighScore(){
@@ -26,7 +24,7 @@ public class HighScoreDTO {
         this.highScore = highScore;
     }
 
-    public void setPlayer(Player player) {
-        this.player = player;
+    public void setPlayer(PlayerDTO playerDTO) {
+        this.playerDTO = playerDTO;
     }
 }
