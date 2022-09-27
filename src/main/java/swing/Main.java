@@ -4,8 +4,11 @@ import main.java.manager.Controller;
 import main.java.manager.Game;
 
 public class Main {
-    static Game game;
+
     static Controller controller;
+    static Game game;
+
+
     static Frame frame;
 
 
