@@ -19,3 +19,4 @@ GUI: Swing</br>
 Ускоренное падение:	S</br>
 Мгновенное падение:	W</br>
 Взять фигуру про запас: Пробел</br>
+<img width="1083" height="1025" alt="image" src="https://github.com/user-attachments/assets/7dc05204-8221-4e05-aad8-d7d98e0d4b1c" />
