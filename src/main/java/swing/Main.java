@@ -1,7 +1,7 @@
-package main.java.swing;
+package swing;
 
-import main.java.manager.Controller;
-import main.java.manager.Game;
+import manager.Controller;
+import manager.Game;
 
 public class Main {
 
@@ -24,6 +24,5 @@ public class Main {
         initialize();
         frame.buildGUI();
         game.startGame();
-
     }
 }

@@ -1,6 +1,6 @@
-package main.java.swing;
+package swing;
 
-import main.java.figure.Figure;
+import figure.Figure;
 
 import javax.swing.*;
 import java.awt.*;

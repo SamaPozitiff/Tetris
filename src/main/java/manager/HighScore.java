@@ -1,8 +1,14 @@
-package main.java.manager;
+package manager;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 
 public class HighScore {
+    @Id
+    @GeneratedValue
+    private Long id;
     private static long highScore = 0;
-
 
 
     public static long getHighScore(){

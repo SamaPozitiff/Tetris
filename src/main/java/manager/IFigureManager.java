@@ -1,6 +1,6 @@
-package main.java.manager;
+package manager;
 
-import main.java.figure.Figure;
+import figure.Figure;
 
 public interface IFigureManager {
     Figure getNextFigure();

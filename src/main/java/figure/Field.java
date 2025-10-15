@@ -1,9 +1,9 @@
-package main.java.figure;
+package figure;
 
-import main.java.manager.HighScore;
-import main.java.manager.IField;
-import main.java.manager.Observable;
-import main.java.manager.Observer;
+import manager.HighScore;
+import manager.IField;
+import manager.Observable;
+import manager.Observer;
 
 import java.util.ArrayList;
 import java.util.Iterator;
